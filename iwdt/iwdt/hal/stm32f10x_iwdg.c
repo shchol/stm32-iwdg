@@ -10,8 +10,8 @@
   *    	 	IWDG boundary addresses 0x40003000 - 400033ff.
   *    	 	IWDG address offset:
   *			 	IWDG_KR - 0x00
-  *  	  	 	IWDG_PR - 0x04
-  *  	  	 	IWDG_RLR - 0x08
+  *  	  	 		IWDG_PR - 0x04
+  *  	  	 		IWDG_RLR - 0x08
   *	  	  	 	IWDG_SR - 0x0C
   */
 
@@ -22,28 +22,28 @@
 #include "stm32f1xx_hal_conf.h"
 
 /** Macros for writing IWDG registers */
-#define IWDG_LOAD_REG(val,addr)	\
-	__asm__ __volatile__ (	"mov.w r1,%1\n\t"	\
-							"ldr r0,[r1]\n\t"	\
-							"mov.w r3,%0\n\t"	\
-							"orr.w r0, r3\n\t"	\
-							"str r0, [r1]\n\t"	\
+#define IWDG_LOAD_REG(val,addr)								\
+	__asm__ __volatile__ (	"mov.w r1,%1\n\t"					\
+							"ldr r0,[r1]\n\t"		\
+							"mov.w r3,%0\n\t"		\
+							"orr.w r0, r3\n\t"		\
+							"str r0, [r1]\n\t"		\
 							:/*output*/			\
 							:/*input*/			\
 							 "r" (val), "r" (addr));
 
 
 /** Check Reload flag register */
-#define IWDG_RELOAD_REG_CHECK_LOOP							\
-		__asm__ __volatile__ (	".LOOP:\n\t"				\
-								"ldr r1, =0x4000300c\n\t"	\
+#define IWDG_RELOAD_REG_CHECK_LOOP									\
+		__asm__ __volatile__ (	".LOOP:\n\t"							\
+								"ldr r1, =0x4000300c\n\t"		\
 								"ldr r0, [r1]\n\t"			\
-								"and r2, r0, #0x02\n\t"		\
+								"and r2, r0, #0x02\n\t"			\
 								"cmp r2, #2\n\t"			\
 								"beq .ENDLOOP\n\t"			\
 								"b .LOOP\n\t"				\
 								".ENDLOOP:\n\t"				\
-								"bx lr\n\t"					\
+								"bx lr\n\t"				\
 								:/*no output*/				\
 								:/*no input*/				\
 								:/*no clobbers*/);
@@ -68,7 +68,7 @@ void iwdt_init(void)
 	/**
 	* \warning
 	*  \code IWDG_RELOAD_REG_CHECK_LOOP \endcode
-	* This macro just check watchdog counter reload value update flag in a loop.
+	* This macro just check watchdog reload update flag in a loop.
 	* The flag is set by hardware to indicate that an update of the reload value
 	* is ongoing.
 	 */
