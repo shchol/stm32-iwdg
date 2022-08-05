@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
-  * @file    stm32f103_iwdg.h
-  * @author
+  * @file    stm32f10x_iwdg.h
+  * @author  Shcherbinin Oleg
   * @version  * @date    28-July-2022
   * @brief   This file contains all the functions prototypes for the IWDG
   *          firmware library.
@@ -27,8 +27,8 @@
   */
 
 
-#ifndef IWDT_HAL_INC_STM32F30X_IWDG_H_
-#define IWDT_HAL_INC_STM32F30X_IWDG_H_
+#ifndef IWDT_HAL_INC_STM32F10X_IWDG_H_
+#define IWDT_HAL_INC_STM32F10X_IWDG_H_
 
 
 #ifdef __cplusplus
@@ -100,5 +100,5 @@ do {							\
 #endif
 
 
-#endif /* IWDT_HAL_INC_STM32F30X_IWDG_H_ */
+#endif /* IWDT_HAL_INC_STM32F10X_IWDG_H_ */
 
