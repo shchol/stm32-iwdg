@@ -96,7 +96,7 @@ unsigned char wdt_check(void)
 
 
 /**
- * Clear IWDGRSTF flag in RCC->CSR
+ * Clear IWDGRSTF flag for RCC->CSR
  */
 void clear_IWDGRSTF(void)
 {
