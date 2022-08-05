@@ -34,19 +34,19 @@
 
 
 /** Check Reload flag register */
-#define IWDG_RELOAD_REG_CHECK_LOOP									\
-		__asm__ __volatile__ (	".LOOP:\n\t"							\
-								"ldr r1, =0x4000300c\n\t"		\
-								"ldr r0, [r1]\n\t"			\
-								"and r2, r0, #0x02\n\t"			\
-								"cmp r2, #2\n\t"			\
-								"beq .ENDLOOP\n\t"			\
-								"b .LOOP\n\t"				\
-								".ENDLOOP:\n\t"				\
-								"bx lr\n\t"				\
-								:/*no output*/				\
-								:/*no input*/				\
-								:/*no clobbers*/);
+#define IWDG_RELOAD_REG_CHECK_LOOP							\
+		__asm__ __volatile__ (	".LOOP:\n\t"					\
+							"ldr r1, =0x4000300c\n\t"	\
+							"ldr r0, [r1]\n\t"		\
+							"and r2, r0, #0x02\n\t"		\
+							"cmp r2, #2\n\t"		\
+							"beq .ENDLOOP\n\t"		\
+							"b .LOOP\n\t"			\
+							".ENDLOOP:\n\t"			\
+							"bx lr\n\t"			\
+							:/*no output*/			\
+							:/*no input*/			\
+							:/*no clobbers*/);
 
 
 /**
